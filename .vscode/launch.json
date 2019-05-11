@@ -13,6 +13,17 @@
       "args": [
         "init"
       ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Install",
+      "program": "${workspaceFolder}/bin/fpm",
+      "cwd": "${workspaceFolder}/dev",
+      "args": [
+        "install",
+        "gh:@vanillawc/wc-markdown"
+      ]
     }
   ]
 }
