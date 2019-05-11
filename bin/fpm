@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+const CLI = require('commander');
+const META = require('../package.json');
+
+CLI.version(META.version, '-v, --version')
+
+CLI.parse(process.argv);
