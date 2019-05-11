@@ -16,6 +16,8 @@
   "main": "src/index.js",
   "bin": "bin/fpm",
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "commander": "^2.20.0"
+  },
   "devDependencies": {}
 }
