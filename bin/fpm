@@ -21,4 +21,12 @@ CLI.command('install <package>')
     console.log(package);
   });
 
+CLI.command('remove <package>')
+  .alias('r')
+  .description('Remove a package')
+  .action((package) => {
+    console.log('remove')
+    console.log(package);
+  });
+
 CLI.parse(process.argv);
