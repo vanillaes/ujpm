@@ -17,8 +17,7 @@ CLI.command('install <package>')
   .alias('i')
   .description('Install a package')
   .action((package) => {
-    console.log('install');
-    console.log(package);
+    FPM.install(package);
   });
 
 CLI.command('remove <package>')

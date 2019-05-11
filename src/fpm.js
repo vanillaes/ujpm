@@ -19,11 +19,16 @@ const FPM = {
     UTIL.writePackage(pkg);
   },
 
-  install: function() {
+  install: function(input) {
     console.log('install');
+    const { strategy, owner, name, version } = UTIL.parseInput(input);
+    console.log(strategy);
+    console.log(owner);
+    console.log(name);
+    console.log(version);
   },
 
-  remove: function() {
+  remove: function(input) {
     console.log('remove');
   },
 
