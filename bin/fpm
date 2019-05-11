@@ -5,4 +5,12 @@ const META = require('../package.json');
 
 CLI.version(META.version, '-v, --version')
 
+CLI.command('init')
+  .description('Initialize the FPM config')
+  .option('-t, --target [value]', 'Set the target directory ', `fpm`)
+  .action((options) => {
+    console.log('init');
+    console.log(options.target);
+  });
+
 CLI.parse(process.argv);
