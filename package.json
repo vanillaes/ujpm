@@ -1,0 +1,21 @@
+{
+  "name": "fpm",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Description ",
+  "keywords": [
+    "package-manager"
+  ],
+  "repository": "http://github.com/vanillawc/fpm/",
+  "author": {
+    "name": "Evan Plaice",
+    "email": "evan.plaice@gmail.com",
+    "url": "http://evanplaice.com"
+  },
+  "contributors": [],
+  "main": "src/index.js",
+  "bin": "bin/fpm",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}
