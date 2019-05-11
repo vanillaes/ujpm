@@ -29,4 +29,12 @@ CLI.command('remove <package>')
     console.log(package);
   });
 
+  CLI.command('update <package>')
+  .alias('u')
+  .description('Update a package')
+  .action((package) => {
+    console.log('update')
+    console.log(package);
+  });
+
 CLI.parse(process.argv);
