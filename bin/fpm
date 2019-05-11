@@ -13,4 +13,12 @@ CLI.command('init')
     console.log(options.target);
   });
 
+CLI.command('install <package>')
+  .alias('i')
+  .description('Install a package')
+  .action((package) => {
+    console.log('install');
+    console.log(package);
+  });
+
 CLI.parse(process.argv);
