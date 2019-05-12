@@ -19,7 +19,7 @@ const FPM = {
     UTIL.writePackage(pkg);
   },
 
-  install: function(input) {
+  install: async function(input) {
     // read package.json
     let pkg = UTIL.readPackage();
 
@@ -38,8 +38,9 @@ const FPM = {
       process.exit(1);
     };
 
-    // fetch the package
-    UTIL.fetchPackage(source);
+    // fetch the package details
+    const details = await UTIL.fetchDetails(source);
+    console.log(details);
   },
 
   remove: function(input) {

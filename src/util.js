@@ -81,17 +81,14 @@ const UTIL = {
     return keys.includes(name);
   },
 
-  fetchPackage: function(source) {
+  fetchDetails: async function(source) {
     switch(source.strategy) {
       case 'github':
-        GITHUB.fetchPackage(source);
-        break;
+        return GITHUB.fetchDetails(source);
       case 'gpm':
-        GPM.fetchPackage(source);
-        break
+        return GPM.fetchDetails(source);
       case 'npm':
-        NPM.fetchPackage(source);
-        break;
+        return await NPM.fetchDetails(source);
       default:
         console.log(`'${source.strategy}' strategy not supported`);
         exit(1);
