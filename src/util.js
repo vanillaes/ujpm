@@ -41,7 +41,10 @@ const UTIL = {
     source.strategy = strategy[1];
 
     // remove leading @ from scoped packages
-    input = (input[0] === '@') ? input.substring(1) : input;
+    if (input[0] === '@') {
+      input = input.substring(1)
+      source.scoped = true;
+    }
     
     // extract source.owner
     let owner = /^(.*?)\//.exec(input);
