@@ -1,5 +1,7 @@
 const fs = require('fs');
-
+const GITHUB = require('./github');
+const GPM = require('./gpm');
+const NPM = require('./npm');
 const PKG_PATH = process.cwd() + '/package.json';
 const UTIL = {
   readPackage: function() {
@@ -62,6 +64,35 @@ const UTIL = {
     source.version = input;
 
     return source;
+  },
+
+  isInitialized: function (pkg) {
+    // has fpm been initialized for this project?
+    return pkg.fpmDependencies && pkg.fpmDependencies.packages;
+  },
+
+  isInstalled: function(pkg, name) {
+    // fetch the names of installed packages
+    const keys = Object.keys(pkg.fpmDependencies.packages);
+
+    return keys.includes(name);
+  },
+
+  fetchPackage: function(pkg, source) {
+    switch(source.strategy) {
+      case 'github':
+        GITHUB.fetchPackage(pkg, source);
+        break;
+      case 'gpm':
+        GPM.fetchPackage(pkg, source);
+        break
+      case 'npm':
+        NPM.fetchPackage(pkg, source);
+        break;
+      default:
+        console.log(`'${source.strategy}' strategy not supported`);
+        exit(1);
+    }
   }
 }
 

@@ -20,12 +20,26 @@ const FPM = {
   },
 
   install: function(input) {
-    console.log('install');
-    const { strategy, owner, name, version } = UTIL.parseInput(input);
-    console.log(strategy);
-    console.log(owner);
-    console.log(name);
-    console.log(version);
+    // read package.json
+    let pkg = UTIL.readPackage();
+
+    // parse the input
+    const source = UTIL.parseInput(input);
+
+    // exit if FPM config not present
+    if (!UTIL.isInitialized(pkg)) {
+      console.log(`FPM config missing in package.json, to initialize this package run 'fpm init'`);
+      process.exit(1);
+    }
+
+    // exit if package is already installed
+    if (UTIL.isInstalled(pkg, source.name)) {
+      console.log(`'${name}' is already installed`);
+      process.exit(1);
+    };
+
+    // fetch the package
+    UTIL.fetchPackage(pkg, source);
   },
 
   remove: function(input) {
