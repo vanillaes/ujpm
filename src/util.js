@@ -82,13 +82,15 @@ const UTIL = {
   },
 
   fetchDetails: async function(source) {
+  // OMG THIS IS SO FETCH!!!
     switch(source.strategy) {
       case 'github':
-        return GITHUB.fetchDetails(source);
-      case 'gpm':
-        return GPM.fetchDetails(source);
+        return await GITHUB.fetchDetails(source);
       case 'npm':
         return await NPM.fetchDetails(source);
+      case 'gpm':
+        // #SomeDay
+        // return await GPM.fetchDetails(source);
       default:
         console.log(`'${source.strategy}' strategy not supported`);
         exit(1);
