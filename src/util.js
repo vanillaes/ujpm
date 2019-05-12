@@ -63,8 +63,8 @@ const UTIL = {
     input = input.substring(name[0].length);
     source.name = name[1];
 
-    // remains are the version
-    source.version = input;
+    // parse the version
+    source.version = input
 
     return source;
   },
@@ -81,16 +81,16 @@ const UTIL = {
     return keys.includes(name);
   },
 
-  fetchPackage: function(pkg, source) {
+  fetchPackage: function(source) {
     switch(source.strategy) {
       case 'github':
-        GITHUB.fetchPackage(pkg, source);
+        GITHUB.fetchPackage(source);
         break;
       case 'gpm':
-        GPM.fetchPackage(pkg, source);
+        GPM.fetchPackage(source);
         break
       case 'npm':
-        NPM.fetchPackage(pkg, source);
+        NPM.fetchPackage(source);
         break;
       default:
         console.log(`'${source.strategy}' strategy not supported`);

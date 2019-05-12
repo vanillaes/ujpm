@@ -39,7 +39,7 @@ const FPM = {
     };
 
     // fetch the package
-    UTIL.fetchPackage(pkg, source);
+    UTIL.fetchPackage(source);
   },
 
   remove: function(input) {
