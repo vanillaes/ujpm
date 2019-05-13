@@ -1,6 +1,7 @@
 var https = require('https');
 const { WritableStreamBuffer } = require('stream-buffers');
 const shasum = require('shasum');
+const { ungzip } = require('node-gzip');
 
 const UNPACK = {
 
@@ -29,6 +30,10 @@ const UNPACK = {
 
   verifyContents: function(input, buffer) {
     return (input === shasum(buffer));
+  },
+
+  unzip: async function(buffer) {
+    return await ungzip(buffer);
   }
 }
 

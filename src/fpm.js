@@ -43,14 +43,17 @@ const FPM = {
     const details = await UTIL.fetchDetails(source);
 
     // download the tar
-    const tar = await UNPACK.download(details.tarball);
+    const tgz = await UNPACK.download(details.tarball);
 
     // verify the contents
-    if (!UNPACK.verifyContents(details.shasum, tar)) {
+    if (!UNPACK.verifyContents(details.shasum, tgz)) {
       throw Error(`ERR_VERIFY: checksum verification of the package failed`); 
     };
 
-    console.log('download and checksum good');
+    // unzip the package contents
+    const tar = await UNPACK.unzip(tgz);
+
+    console.log(tar);
   },
 
   remove: function(input) {
