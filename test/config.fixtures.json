@@ -1,0 +1,21 @@
+{
+  "emptyFile": "",
+  "emptyConfig": {
+    "package.json": "{}"
+  },
+  "emptyConfigData": "{}",
+  "npmInit": {
+    "package.json": "{\n  \"name\": \"tmp\"\n}"
+  },
+  "npmInit2": {
+    "package.json": "{\n  \"name\": \"test\"\n}"
+  },
+  "fpmInit": {
+    "package.json": "{\n  \"name\": \"tmp\",\n  \"fpmDependencies\": {\n    \"target\": \"fpm\",\n    \"packages\": {}\n  }\n}"
+  },
+  "fpmInitData": "{ \"name\": \"tmp\", \"fpmDependencies\": { \"target\": \"fpm\", \"packages\": {} } }",
+  "fpmPackageExists": {
+    "package.json": "{\n  \"name\": \"tmp\",\n  \"fpmDependencies\": {\n    \"target\": \"fpm\",\n    \"packages\": {\n      \"wc-markdown\": \"1.0.4\"\n    }\n  }\n}"    
+  },
+  "fpmPackageExistsData": "{ \"name\": \"tmp\", \"fpmDependencies\": { \"target\": \"fpm\", \"packages\": { \"wc-markdown\": \"1.0.4\" } } }"
+}
