@@ -44,7 +44,11 @@ const UNPACK = {
     reader.put(buffer)
 
     // extract the tar contents
-    reader.pipe(tar.extract(`${process.cwd()}/${target}`));
+    reader.pipe(tar.extract(`${process.cwd()}/${target}`, { map: function(header) {
+      const match = /^(.*?)\//.exec(header.name);
+      header.name = header.name.substring(match[0].length - 1);
+      return header;
+    }}));
   }
 }
 
