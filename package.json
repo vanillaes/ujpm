@@ -27,6 +27,7 @@
     "tar-fs": "^2.0.0"
   },
   "devDependencies": {
+    "mock-fs": "^4.9.0",
     "tape": "^4.10.1"
   }
 }
