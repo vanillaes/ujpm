@@ -1,5 +1,6 @@
 var https = require('https');
 const { WritableStreamBuffer } = require('stream-buffers');
+const shasum = require('shasum');
 
 const UNPACK = {
 
@@ -24,6 +25,10 @@ const UNPACK = {
       writer.on('finish', () => resolve(writer.getContents()));
       writer.on('error', () => reject);
     });
+  },
+
+  verifyContents: function(input, buffer) {
+    return (input === shasum(buffer));
   }
 }
 

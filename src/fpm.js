@@ -44,7 +44,13 @@ const FPM = {
 
     // download the tar
     const tar = await UNPACK.download(details.tarball);
-    console.log(tar);
+
+    // verify the contents
+    if (!UNPACK.verifyContents(details.shasum, tar)) {
+      throw Error(`ERR_VERIFY: checksum verification of the package failed`); 
+    };
+
+    console.log('download and checksum good');
   },
 
   remove: function(input) {
