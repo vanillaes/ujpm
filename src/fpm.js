@@ -1,4 +1,5 @@
 const UTIL = require('./util');
+const UNPACK = require('./unpack');
 const FPM = {
   init: function (target) {
     // read package.json
@@ -40,7 +41,10 @@ const FPM = {
 
     // fetch the package details
     const details = await UTIL.fetchDetails(source);
-    console.log(details);
+
+    // download the tar
+    const tar = await UNPACK.download(details.tarball);
+    console.log(tar);
   },
 
   remove: function(input) {
