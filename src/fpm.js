@@ -53,7 +53,15 @@ const FPM = {
     // unzip the package contents
     const tar = await UNPACK.unzip(tgz);
 
-    console.log(tar);
+    // untar the package contents
+    const target = `${pkg.fpmDependencies.target}/${source.name}`;
+    await UNPACK.untar(target, tar);
+
+    // update package.json
+    pkg.fpmDependencies.packages[source.name] = details.version;
+    UTIL.writePackage(pkg);
+
+    console.log(`${input} installed successfully` );
   },
 
   remove: function(input) {

@@ -1,7 +1,8 @@
 var https = require('https');
-const { WritableStreamBuffer } = require('stream-buffers');
+const { ReadableStreamBuffer, WritableStreamBuffer } = require('stream-buffers');
 const shasum = require('shasum');
 const { ungzip } = require('node-gzip');
+const tar = require('tar-fs');
 
 const UNPACK = {
 
@@ -34,6 +35,16 @@ const UNPACK = {
 
   unzip: async function(buffer) {
     return await ungzip(buffer);
+  },
+
+  untar: async function(target, buffer) {
+    let reader = new ReadableStreamBuffer();
+
+    // load the reader stream
+    reader.put(buffer)
+
+    // extract the tar contents
+    reader.pipe(tar.extract(`${process.cwd()}/${target}`));
   }
 }
 
