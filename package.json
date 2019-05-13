@@ -15,7 +15,9 @@
   "contributors": [],
   "main": "src/index.js",
   "bin": "bin/fpm",
-  "scripts": {},
+  "scripts": {
+    "package": "npx rimraf package && npm pack | tail -n 1 | xargs tar -xf"
+  },
   "dependencies": {
     "commander": "^2.20.0",
     "node-gzip": "^1.1.2",
