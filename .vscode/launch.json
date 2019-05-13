@@ -22,7 +22,7 @@
       "cwd": "${workspaceFolder}/dev",
       "args": [
         "install",
-        "gh:@vanillawc/wc-markdown"
+        "npm:@vanillawc/wc-markdown"
       ]
     }
   ]
