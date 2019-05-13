@@ -35,7 +35,7 @@ const FPM = {
 
     // exit if package is already installed
     if (UTIL.isInstalled(pkg, source.name)) {
-      console.log(`'${name}' is already installed`);
+      console.log(`'${source.name}' is already installed`);
       process.exit(1);
     };
 
