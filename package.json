@@ -16,7 +16,8 @@
   "main": "src/index.js",
   "bin": "bin/fpm",
   "scripts": {
-    "package": "npx rimraf package && npm pack | tail -n 1 | xargs tar -xf"
+    "package": "npx rimraf package && npm pack | tail -n 1 | xargs tar -xf",
+    "postversion": "git push --follow-tags"
   },
   "dependencies": {
     "commander": "^2.20.0",
