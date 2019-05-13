@@ -4,7 +4,6 @@ const execAsync = promisify(exec);
 
 const NPM = {
   fetchDetails: async function(source) {
-    console.log('fetching NPM package');
     const identity = this.formatIdentity(source);
     const version = await this.matchVersion(identity, source.version);
     const { tarball, shasum } = await this.getDownload(identity, version);

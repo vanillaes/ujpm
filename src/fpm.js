@@ -13,8 +13,8 @@ const FPM = {
     pkg.fpmDependencies.target = target;
     pkg.fpmDependencies.packages = {};
 
-    // log the output
-    console.log(pkg);
+    // prettify and log the output
+    console.log(JSON.stringify(pkg, null, 2));
 
     // save the config
     UTIL.writePackage(pkg);
