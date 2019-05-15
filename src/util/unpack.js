@@ -6,6 +6,8 @@ const tar = require('tar-fs');
 
 const UNPACK = {
 
+  // TODO: add unpack function to wrap the specifics for reuse in both install/remove
+
   download: async function(url) {
     // setup an auto-resizing buffer
     let writer = new WritableStreamBuffer({
