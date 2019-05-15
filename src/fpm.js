@@ -6,6 +6,8 @@ const PARSE = require('./util/parse');
 const RM = require('./util/rm');
 const UNPACK = require('./util/unpack');
 
+const TARGET_PATH = process.cwd() + '/package.json';
+
 const FPM = {
   init: async (target) => {
     // read package.json
@@ -70,8 +72,26 @@ const FPM = {
     console.log(`${input} installed successfully` );
   },
 
-  remove: function(input) {
-    console.log('remove');
+  remove: async (input) => {
+    // read package.json
+    let pkg = await CONFIG.read();
+
+    // parse the input
+    const source = PARSE.input(input);
+
+    if (!CONFIG.isInstalled(pkg, source.package)) {
+      throw Error(`ERR_REMOVE: package is not installed`)
+    }
+
+    // delete the source
+    const target = `${process.cwd()}/${pkg.fpmDependencies.target}/${source.name}`;
+    await RM.rf(target);
+
+    // update package.json
+    delete pkg.fpmDependencies.packages[source.package];
+    await CONFIG.write(pkg);
+    
+    console.log(`${input} removed successfully` );
   },
 
   update: function() {

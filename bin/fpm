@@ -24,8 +24,7 @@ CLI.command('remove <package>')
   .alias('r')
   .description('Remove a package')
   .action((package) => {
-    console.log('remove')
-    console.log(package);
+    FPM.remove(package);
   });
 
   CLI.command('update <package>')
