@@ -48,6 +48,7 @@ test('CONFIG.write(pkg) - write package.json contents', async (t) => {
 
   try {
     await CONFIG.write(fixtures.npmInit2);
+    // TODO: assert package contents
   } catch {
     t.fail();
   }
