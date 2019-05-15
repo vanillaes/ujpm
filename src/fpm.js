@@ -64,9 +64,7 @@ const FPM = {
     await UNPACK.untar(target, tar);
 
     // update package.json
-    const scope = source.scoped ? '@' : '';
-    const package = `${scope}${source.owner}/${source.name}`;
-    pkg.fpmDependencies.packages[package] = details.version;
+    pkg.fpmDependencies.packages[source.package] = details.version;
     await CONFIG.write(pkg);
 
     console.log(`${input} installed successfully` );
