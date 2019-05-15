@@ -3,6 +3,7 @@ const GITHUB = require('./util/github');
 const GPM = require('./util/gpm');
 const NPM = require('./util/npm');
 const PARSE = require('./util/parse');
+const RM = require('./util/rm');
 const UNPACK = require('./util/unpack');
 
 const FPM = {
