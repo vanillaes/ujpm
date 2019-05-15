@@ -7,6 +7,15 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Test",
+      "cwd": "${workspaceFolder}/test",
+      "args": [
+        "${file}"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Init",
       "program": "${workspaceFolder}/bin/fpm",
       "cwd": "${workspaceFolder}/dev",
