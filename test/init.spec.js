@@ -4,7 +4,7 @@ const fs = require('fs');
 const fixtures = require('./init.fixtures.json');
 const fpm = require('../src/fpm');
 
-const logger = {
+const logging = {
   log: null,
   disable: () => {
     this.log = console.log; 
@@ -22,7 +22,7 @@ test('Init - throw if package.json does not exist', async (t) => {
   try {
     await fpm.init();
   } catch {
-    t.pass();
+    t.pass(' should throw an exception if package.json does not exist');
   }
 
   mock.restore();
@@ -33,15 +33,14 @@ test('Init - by default should init with a generic config', async (t) => {
   mock(fixtures.emptyConfig);
 
   try {
-    logger.disable();
+    logging.disable();
     await fpm.init();
-    logger.enable();
+    logging.enable();
     const result = fs.readFileSync('package.json', 'utf-8');
     const expect = fixtures.fpmInitData;
-    t.equals(expect, result);
-  } catch (e) {
-    console.log(e);
-    t.fail();
+    t.equals(expect, result, 'should have the correct package.json contents');
+  } catch {
+    t.fail('should not throw an exception during initialization');
   }
 
   t.end();
@@ -51,15 +50,14 @@ test('Init - supplied a target should init with the target prop set', async (t) 
   mock(fixtures.emptyConfig);
 
   try {
-    logger.disable();
+    logging.disable();
     await fpm.init('vendor');
-    logger.enable();
+    logging.enable();
     const result = fs.readFileSync('package.json', 'utf-8');
     const expect = fixtures.fpmInitData2;
     t.equals(expect, result);
-  } catch (e) {
-    console.log(e);
-    t.fail();
+  } catch {
+    t.fail('should not throw an exception during initialization');
   }
 
   t.end();
