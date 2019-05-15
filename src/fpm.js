@@ -94,8 +94,19 @@ const FPM = {
     console.log(`${input} removed successfully` );
   },
 
-  update: function() {
+  update: async function() {
     console.log('update');
+
+    // TODO: should verify the package exists
+
+    // TODO: verify the version is valid
+
+    // TODO: if version is provided, verify it's greater than the previous version
+
+    // TODO: update to latest or version provided
+
+    // TODO: update package.json
+
   },
 
   fetchDetails: async function(source) {
