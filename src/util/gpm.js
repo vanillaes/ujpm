@@ -1,6 +1,6 @@
 const GPM = {
-  fetchPackage: function() {
-    console.log('fetching GitHub package');
+  fetchDetails: function() {
+    console.log('fetching GitHub package details');
   },
 
   getVersions: function(package) {

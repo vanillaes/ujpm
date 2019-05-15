@@ -1,6 +1,6 @@
 const GITHUB = {
-  fetchPackage: function() {
-    console.log('fetching GitHub repo');
+  fetchDetails: function() {
+    console.log('fetching GitHub repo details');
   },
 
   // https://api.github.com/repos/vanillawc/wc-markdown/tags
