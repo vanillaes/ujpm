@@ -1,0 +1,8 @@
+{
+  "emptyFile": "",
+  "emptyConfig": {
+    "package.json": "{}"
+  },
+  "fpmInitData": "{\n  \"fpmDependencies\": {\n    \"packages\": {}\n  }\n}",
+  "fpmInitData2": "{\n  \"fpmDependencies\": {\n    \"target\": \"vendor\",\n    \"packages\": {}\n  }\n}"
+}
