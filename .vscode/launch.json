@@ -33,6 +33,17 @@
         "install",
         "npm:@vanillawc/wc-markdown"
       ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Remove",
+      "program": "${workspaceFolder}/bin/fpm",
+      "cwd": "${workspaceFolder}/dev",
+      "args": [
+        "remove",
+        "npm:@vanillawc/wc-markdown"
+      ]
     }
   ]
 }
