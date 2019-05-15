@@ -20,8 +20,15 @@ const PARSE = {
 
     // return source.name if no version scope
     if (!/@/.test(input)) {
+      // set scope.name
       source.name = input;
+
+      // set scope.package
+      source.package = `${source.scoped ? '@' : ''}${source.owner}/${source.name}`;
+
+      // set scope.version
       source.version = 'latest';
+
       return source;
     }
 
@@ -30,9 +37,12 @@ const PARSE = {
     input = input.substring(name[0].length);
     source.name = name[1];
 
-    // parse the version
-    source.version = input
+    // set scope.package
+    source.package = `${source.scoped ? '@' : ''}${source.owner}/${source.name}`;
 
+    // set scope.version
+    source.version = input
+  
     return source;
   }
 };
