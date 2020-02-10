@@ -2,7 +2,7 @@ const test = require('tape');
 const mock = require('mock-fs');
 const fs = require('fs');
 const fixtures = require('./init.fixtures.json');
-const ujpm = require('../src/ujpm');
+const ujpm = require('../src/ujpm.cjs');
 
 const logging = {
   log: null,

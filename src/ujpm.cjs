@@ -1,10 +1,10 @@
-const CONFIG = require('./util/config');
-const GITHUB = require('./util/github');
-const GPM = require('./util/gpm');
-const NPM = require('./util/npm');
-const PARSE = require('./util/parse');
-const RM = require('./util/rm');
-const UNPACK = require('./util/unpack');
+const CONFIG = require('./util/config.cjs');
+const GITHUB = require('./util/github.cjs');
+const GPM = require('./util/gpm.cjs');
+const NPM = require('./util/npm.cjs');
+const PARSE = require('./util/parse.cjs');
+const RM = require('./util/rm.cjs');
+const UNPACK = require('./util/unpack.cjs');
 
 const TARGET_PATH = process.cwd() + '/package.json';
 

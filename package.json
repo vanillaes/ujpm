@@ -8,7 +8,7 @@
   ],
   "author": "Evan Plaice <evanplaice@gmail.com> (http://evanplaice.com/)",
   "license": "MIT",
-  "main": "src/index.js",
+  "type": "module",
   "bin": "bin/ujpm",
   "scripts": {
     "package": "npx rimraf package && npm pack | tail -n 1 | xargs tar -xf",

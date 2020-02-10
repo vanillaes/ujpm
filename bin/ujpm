@@ -1,38 +1,39 @@
 #!/usr/bin/env node
+import cli from 'commander';
+import ujpm from '../src/ujpm.cjs';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const pkg = require('../package.json');
 
-const CLI = require('commander');
-const META = require('../package.json');
-const UJPM = require('../src/ujpm');
+cli.version(pkg.version, '-v, --version')
 
-CLI.version(META.version, '-v, --version')
-
-CLI.command('init')
+cli.command('init')
   .description('Initialize the UJPM config')
   .option('-t, --target [value]', 'Set the target directory ', `ujpm`)
   .action((options) => {
-    UJPM.init(options.target);
+    ujpm.init(options.target);
   });
 
-CLI.command('install <package>')
+cli.command('install <package>')
   .alias('i')
   .description('Install a package')
-  .action((package) => {
-    UJPM.install(package);
+  .action((dep) => {
+    ujpm.install(dep);
   });
 
-CLI.command('remove <package>')
+cli.command('remove <package>')
   .alias('r')
   .description('Remove a package')
-  .action((package) => {
-    UJPM.remove(package);
+  .action((dep) => {
+    ujpm.remove(dep);
   });
 
-  CLI.command('update <package>')
+cli.command('update <package>')
   .alias('u')
   .description('Update a package')
-  .action((package) => {
+  .action((dep) => {
     console.log('update')
-    console.log(package);
+    console.log(dep);
   });
 
-CLI.parse(process.argv);
+cli.parse(process.argv);

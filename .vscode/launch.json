@@ -7,6 +7,14 @@
     {
       "type": "node",
       "request": "launch",
+      "runtimeVersion": "13.2.0",
+      "name": "Debug",
+      "program": "${file}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "runtimeVersion": "13.2.0",
       "name": "Test",
       "cwd": "${workspaceFolder}/test",
       "args": [
@@ -16,9 +24,10 @@
     {
       "type": "node",
       "request": "launch",
+      "runtimeVersion": "13.2.0",
       "name": "Init",
-      "program": "${workspaceFolder}/bin/ujpm",
       "cwd": "${workspaceFolder}/dev",
+      "program": "${workspaceFolder}/bin/ujpm",
       "args": [
         "init"
       ]
@@ -26,9 +35,10 @@
     {
       "type": "node",
       "request": "launch",
+      "runtimeVersion": "13.2.0",
       "name": "Install",
-      "program": "${workspaceFolder}/bin/ujpm",
       "cwd": "${workspaceFolder}/dev",
+      "program": "${workspaceFolder}/bin/ujpm",
       "args": [
         "install",
         "npm:@vanillawc/wc-markdown"
@@ -37,9 +47,10 @@
     {
       "type": "node",
       "request": "launch",
+      "runtimeVersion": "13.2.0",
       "name": "Remove",
-      "program": "${workspaceFolder}/bin/ujpm",
       "cwd": "${workspaceFolder}/dev",
+      "program": "${workspaceFolder}/bin/ujpm",
       "args": [
         "remove",
         "npm:@vanillawc/wc-markdown"
