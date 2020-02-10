@@ -1,6 +1,6 @@
 import CONFIG from './util/config.js';
 import GITHUB from './util/github.js';
-import GPM from './util/gpm.cjs';
+import GPM from './util/gpm.js';
 import NPM from './util/npm.cjs';
 import PARSE from './util/parse.cjs';
 import RM from './util/rm.cjs';
