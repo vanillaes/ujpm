@@ -47,7 +47,7 @@ export async function install (input) {
   };
 
   // fetch the package details
-  const details = await this.fetchDetails(source);
+  const details = await fetchDetails(source);
 
   // download the tar
   const tgz = await UNPACK.download(details.tarball);
