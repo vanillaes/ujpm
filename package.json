@@ -1,20 +1,15 @@
 {
-  "name": "@vanillawc/fpm",
-  "version": "1.0.0-alpha0",
-  "license": "MIT",
-  "description": "Description ",
+  "name": "ujpm",
+  "version": "0.0.0",
+  "description": "Universal JavaScript Package Manager",
   "keywords": [
-    "package-manager"
+    "package-manager",
+    "esm"
   ],
-  "repository": "http://github.com/vanillawc/fpm/",
-  "author": {
-    "name": "Evan Plaice",
-    "email": "evan.plaice@gmail.com",
-    "url": "http://evanplaice.com"
-  },
-  "contributors": [],
+  "author": "Evan Plaice <evanplaice@gmail.com> (http://evanplaice.com/)",
+  "license": "MIT",
   "main": "src/index.js",
-  "bin": "bin/fpm",
+  "bin": "bin/ujpm",
   "scripts": {
     "package": "npx rimraf package && npm pack | tail -n 1 | xargs tar -xf",
     "postversion": "git push --follow-tags"

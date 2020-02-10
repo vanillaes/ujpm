@@ -10,12 +10,12 @@
   "npmInit2": {
     "package.json": "{\n  \"name\": \"test\"\n}"
   },
-  "fpmInit": {
-    "package.json": "{\n  \"name\": \"tmp\",\n  \"fpmDependencies\": {\n    \"target\": \"fpm\",\n    \"packages\": {}\n  }\n}"
+  "ujpmInit": {
+    "package.json": "{\n  \"name\": \"tmp\",\n  \"ujpmDependencies\": {\n    \"target\": \"ujpm\",\n    \"packages\": {}\n  }\n}"
   },
-  "fpmInitData": "{ \"name\": \"tmp\", \"fpmDependencies\": { \"target\": \"fpm\", \"packages\": {} } }",
-  "fpmPackageExists": {
-    "package.json": "{\n  \"name\": \"tmp\",\n  \"fpmDependencies\": {\n    \"target\": \"fpm\",\n    \"packages\": {\n      \"wc-markdown\": \"1.0.4\"\n    }\n  }\n}"    
+  "ujpmInitData": "{ \"name\": \"tmp\", \"ujpmDependencies\": { \"target\": \"ujpm\", \"packages\": {} } }",
+  "ujpmPackageExists": {
+    "package.json": "{\n  \"name\": \"tmp\",\n  \"ujpmDependencies\": {\n    \"target\": \"ujpm\",\n    \"packages\": {\n      \"wc-markdown\": \"1.0.4\"\n    }\n  }\n}"    
   },
-  "fpmPackageExistsData": "{ \"name\": \"tmp\", \"fpmDependencies\": { \"target\": \"fpm\", \"packages\": { \"wc-markdown\": \"1.0.4\" } } }"
+  "ujpmPackageExistsData": "{ \"name\": \"tmp\", \"ujpmDependencies\": { \"target\": \"ujpm\", \"packages\": { \"wc-markdown\": \"1.0.4\" } } }"
 }

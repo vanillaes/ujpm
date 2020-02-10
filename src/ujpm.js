@@ -8,7 +8,7 @@ const UNPACK = require('./util/unpack');
 
 const TARGET_PATH = process.cwd() + '/package.json';
 
-const FPM = {
+const UJPM = {
   init: async (target) => {
     // read package.json
     let pkg = await CONFIG.read();
@@ -17,9 +17,9 @@ const FPM = {
     pkg = CONFIG.exists(pkg);
 
     // add basic config
-    pkg.fpmDependencies = {};
-    pkg.fpmDependencies.target = target;
-    pkg.fpmDependencies.packages = {};
+    pkg.ujpmDependencies = {};
+    pkg.ujpmDependencies.target = target;
+    pkg.ujpmDependencies.packages = {};
 
     // prettify and log the output
     console.log(JSON.stringify(pkg, null, 2));
@@ -35,9 +35,9 @@ const FPM = {
     // parse the input
     const source = PARSE.input(input);
 
-    // exit if FPM config not present
+    // exit if UJPM config not present
     if (!CONFIG.isInitialized(pkg)) {
-      console.log(`FPM config missing in package.json, to initialize this package run 'fpm init'`);
+      console.log(`UJPM config missing in package.json, to initialize this package run 'ujpm init'`);
       process.exit(1);
     }
 
@@ -62,11 +62,11 @@ const FPM = {
     const tar = await UNPACK.unzip(tgz);
 
     // untar the package contents
-    const target = `${pkg.fpmDependencies.target}/${source.name}`;
+    const target = `${pkg.ujpmDependencies.target}/${source.name}`;
     await UNPACK.untar(target, tar);
 
     // update package.json
-    pkg.fpmDependencies.packages[source.package] = details.version;
+    pkg.ujpmDependencies.packages[source.package] = details.version;
     await CONFIG.write(pkg);
 
     console.log(`${input} installed successfully` );
@@ -84,11 +84,11 @@ const FPM = {
     }
 
     // delete the source
-    const target = `${process.cwd()}/${pkg.fpmDependencies.target}/${source.name}`;
+    const target = `${process.cwd()}/${pkg.ujpmDependencies.target}/${source.name}`;
     await RM.rf(target);
 
     // update package.json
-    delete pkg.fpmDependencies.packages[source.package];
+    delete pkg.ujpmDependencies.packages[source.package];
     await CONFIG.write(pkg);
     
     console.log(`${input} removed successfully` );
@@ -126,4 +126,4 @@ const FPM = {
     }
 };
 
-module.exports = FPM;
+module.exports = UJPM;

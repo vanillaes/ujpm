@@ -3,6 +3,6 @@
   "emptyConfig": {
     "package.json": "{}"
   },
-  "fpmInitData": "{\n  \"fpmDependencies\": {\n    \"packages\": {}\n  }\n}",
-  "fpmInitData2": "{\n  \"fpmDependencies\": {\n    \"target\": \"vendor\",\n    \"packages\": {}\n  }\n}"
+  "ujpmInitData": "{\n  \"ujpmDependencies\": {\n    \"packages\": {}\n  }\n}",
+  "ujpmInitData2": "{\n  \"ujpmDependencies\": {\n    \"target\": \"vendor\",\n    \"packages\": {}\n  }\n}"
 }

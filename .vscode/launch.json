@@ -17,7 +17,7 @@
       "type": "node",
       "request": "launch",
       "name": "Init",
-      "program": "${workspaceFolder}/bin/fpm",
+      "program": "${workspaceFolder}/bin/ujpm",
       "cwd": "${workspaceFolder}/dev",
       "args": [
         "init"
@@ -27,7 +27,7 @@
       "type": "node",
       "request": "launch",
       "name": "Install",
-      "program": "${workspaceFolder}/bin/fpm",
+      "program": "${workspaceFolder}/bin/ujpm",
       "cwd": "${workspaceFolder}/dev",
       "args": [
         "install",
@@ -38,7 +38,7 @@
       "type": "node",
       "request": "launch",
       "name": "Remove",
-      "program": "${workspaceFolder}/bin/fpm",
+      "program": "${workspaceFolder}/bin/ujpm",
       "cwd": "${workspaceFolder}/dev",
       "args": [
         "remove",

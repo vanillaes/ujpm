@@ -28,21 +28,21 @@ const CONFIG = {
   },
 
   exists: function(pkg) {
-    if (pkg.fpmDependencies) {
-      throw Error(`ERR_CONFIG: Init failed, 'fpmDependencies' already exists in package.json`);
+    if (pkg.ujpmDependencies) {
+      throw Error(`ERR_CONFIG: Init failed, 'ujpmDependencies' already exists in package.json`);
     }
 
     return pkg;
   },
 
-  // has fpm been initialized for this project?
+  // has ujpm been initialized for this project?
   isInitialized: function (pkg) {
-    return !!(pkg.fpmDependencies && pkg.fpmDependencies.packages);
+    return !!(pkg.ujpmDependencies && pkg.ujpmDependencies.packages);
   },
 
   // fetch the names of installed packages
   isInstalled: function(pkg, name) {
-    const keys = Object.keys(pkg.fpmDependencies.packages);
+    const keys = Object.keys(pkg.ujpmDependencies.packages);
 
     return keys.includes(name);
   }

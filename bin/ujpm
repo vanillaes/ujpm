@@ -2,29 +2,29 @@
 
 const CLI = require('commander');
 const META = require('../package.json');
-const FPM = require('../src/fpm');
+const UJPM = require('../src/ujpm');
 
 CLI.version(META.version, '-v, --version')
 
 CLI.command('init')
-  .description('Initialize the FPM config')
-  .option('-t, --target [value]', 'Set the target directory ', `fpm`)
+  .description('Initialize the UJPM config')
+  .option('-t, --target [value]', 'Set the target directory ', `ujpm`)
   .action((options) => {
-    FPM.init(options.target);
+    UJPM.init(options.target);
   });
 
 CLI.command('install <package>')
   .alias('i')
   .description('Install a package')
   .action((package) => {
-    FPM.install(package);
+    UJPM.install(package);
   });
 
 CLI.command('remove <package>')
   .alias('r')
   .description('Remove a package')
   .action((package) => {
-    FPM.remove(package);
+    UJPM.remove(package);
   });
 
   CLI.command('update <package>')

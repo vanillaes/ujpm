@@ -2,7 +2,7 @@ const test = require('tape');
 const mock = require('mock-fs');
 const fs = require('fs');
 const fixtures = require('./init.fixtures.json');
-const fpm = require('../src/fpm');
+const ujpm = require('../src/ujpm');
 
 const logging = {
   log: null,
@@ -20,7 +20,7 @@ test('Init - throw if package.json does not exist', async (t) => {
   t.plan(1);
 
   try {
-    await fpm.init();
+    await ujpm.init();
   } catch {
     t.pass(' should throw an exception if package.json does not exist');
   }
@@ -34,10 +34,10 @@ test('Init - by default should init with a generic config', async (t) => {
 
   try {
     logging.disable();
-    await fpm.init();
+    await ujpm.init();
     logging.enable();
     const result = fs.readFileSync('package.json', 'utf-8');
-    const expect = fixtures.fpmInitData;
+    const expect = fixtures.ujpmInitData;
     t.equals(expect, result, 'should have the correct package.json contents');
   } catch {
     t.fail('should not throw an exception during initialization');
@@ -51,10 +51,10 @@ test('Init - supplied a target should init with the target prop set', async (t) 
 
   try {
     logging.disable();
-    await fpm.init('vendor');
+    await ujpm.init('vendor');
     logging.enable();
     const result = fs.readFileSync('package.json', 'utf-8');
-    const expect = fixtures.fpmInitData2;
+    const expect = fixtures.ujpmInitData2;
     t.equals(expect, result);
   } catch {
     t.fail('should not throw an exception during initialization');
