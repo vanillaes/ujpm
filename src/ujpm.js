@@ -1,4 +1,4 @@
-import CONFIG from './util/config.cjs';
+import CONFIG from './util/config.js';
 import GITHUB from './util/github.cjs';
 import GPM from './util/gpm.cjs';
 import NPM from './util/npm.cjs';
