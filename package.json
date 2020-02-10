@@ -9,7 +9,9 @@
   "author": "Evan Plaice <evanplaice@gmail.com> (http://evanplaice.com/)",
   "license": "MIT",
   "type": "module",
-  "bin": "bin/ujpm",
+  "bin": {
+    "ujpm": "bin/ujpm"
+  },
   "scripts": {
     "package": "npx rimraf package && npm pack | tail -n 1 | xargs tar -xf",
     "postversion": "git push --follow-tags"
