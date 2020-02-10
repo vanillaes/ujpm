@@ -14,26 +14,26 @@ cli.command('init')
     init(options.target);
   });
 
-cli.command('install <package>')
+cli.command('install <pack>')
   .alias('i')
   .description('Install a package')
-  .action((dep) => {
-    install(dep);
+  .action((pack) => {
+    install(pack);
   });
 
-cli.command('remove <package>')
+cli.command('remove <pack>')
   .alias('r')
   .description('Remove a package')
-  .action((dep) => {
-    remove(dep);
+  .action((pack) => {
+    remove(pack);
   });
 
-cli.command('update <package>')
+cli.command('update <pack>')
   .alias('u')
   .description('Update a package')
-  .action((dep) => {
+  .action((pack) => {
     console.log('update')
-    console.log(dep);
+    console.log(pack);
   });
 
 cli.parse(process.argv);
