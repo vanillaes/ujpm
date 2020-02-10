@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import cli from 'commander';
-import ujpm from '../src/ujpm.cjs';
+import { init, install, remove, update } from '../src/ujpm.js';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const pkg = require('../package.json');
@@ -11,21 +11,21 @@ cli.command('init')
   .description('Initialize the UJPM config')
   .option('-t, --target [value]', 'Set the target directory ', `ujpm`)
   .action((options) => {
-    ujpm.init(options.target);
+    init(options.target);
   });
 
 cli.command('install <package>')
   .alias('i')
   .description('Install a package')
   .action((dep) => {
-    ujpm.install(dep);
+    install(dep);
   });
 
 cli.command('remove <package>')
   .alias('r')
   .description('Remove a package')
   .action((dep) => {
-    ujpm.remove(dep);
+    remove(dep);
   });
 
 cli.command('update <package>')
