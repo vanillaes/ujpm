@@ -25,6 +25,17 @@
       "type": "node",
       "request": "launch",
       "runtimeVersion": "13.2.0",
+      "name": "Version",
+      "cwd": "${workspaceFolder}/dev",
+      "program": "${workspaceFolder}/bin/ujpm",
+      "args": [
+        "--version"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "runtimeVersion": "13.2.0",
       "name": "Init",
       "cwd": "${workspaceFolder}/dev",
       "program": "${workspaceFolder}/bin/ujpm",
