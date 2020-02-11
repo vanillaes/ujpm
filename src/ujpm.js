@@ -2,7 +2,7 @@ import CONFIG from './util/config.js';
 import GITHUB from './util/github.js';
 import GPM from './util/gpm.js';
 import NPM from './util/npm.js';
-import PARSE from './util/parse.cjs';
+import { parse } from './util/core.js';
 import RM from './util/rm.cjs';
 import UNPACK from './util/unpack.cjs';
 
@@ -32,7 +32,7 @@ export async function install (input) {
   let pkg = await CONFIG.read();
 
   // parse the input
-  const source = PARSE.input(input);
+  const source = parse(input);
 
   // exit if UJPM config not present
   if (!CONFIG.isInitialized(pkg)) {
@@ -76,7 +76,7 @@ export async function remove (input) {
   let pkg = await CONFIG.read();
 
   // parse the input
-  const source = PARSE.input(input);
+  const source = parse(input);
 
   if (!CONFIG.isInstalled(pkg, source.package)) {
     throw Error(`ERR_REMOVE: package is not installed`)
