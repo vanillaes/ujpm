@@ -1,6 +1,34 @@
 import { promisify } from 'util';
 import rmrf from 'rimraf';
 const rimrafAsync = promisify(rmrf);
+import https from 'https';
+import sb from 'stream-buffers';
+import shasum from 'shasum';
+import gzip from 'node-gzip';
+import tar from 'tar-fs';
+
+export async function download (url) {
+  // setup an auto-resizing buffer
+  let writer = new sb.WritableStreamBuffer({
+    initialSize: (100 * 1024),
+    incrementAmount: (100 * 1024)
+  });
+
+  // pipe the download into the buffer
+  https.get(url, (res) => {
+    if (res.statusCode === 200) {
+      res.on('data', d => writer.write(d));
+      res.on('error', e => console.error(e));
+      res.on('close', () => writer.end());
+    }
+  });
+
+  // promisify the writing
+  return await new Promise(function(resolve, reject) {
+    writer.on('finish', () => resolve(writer.getContents()));
+    writer.on('error', () => reject);
+  });
+}
 
 export function parse (input) {
   const source = {};
@@ -57,4 +85,26 @@ export async function rimraf (target) {
   }
 }
 
-export default { parse, rimraf };
+export async function untar (target, buffer) {
+  let reader = new sb.ReadableStreamBuffer();
+
+  // load the reader stream
+  reader.put(buffer)
+
+  // extract the tar contents
+  reader.pipe(tar.extract(`${process.cwd()}/${target}`, { map: function(header) {
+    const match = /^(.*?)\//.exec(header.name);
+    header.name = header.name.substring(match[0].length - 1);
+    return header;
+  }}));
+}
+
+export async function unzip (buffer) {
+  return await gzip.ungzip(buffer);
+}
+
+export function verify (input, buffer) {
+  return (input === shasum(buffer));
+}
+
+export default { download, parse, rimraf, untar, unzip, verify };

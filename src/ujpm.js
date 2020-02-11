@@ -1,9 +1,8 @@
+import { download, parse, rimraf, untar, unzip, verify } from './util/core.js';
 import CONFIG from './util/config.js';
 import GITHUB from './util/github.js';
 import GPM from './util/gpm.js';
 import NPM from './util/npm.js';
-import { parse, rimraf } from './util/core.js';
-import UNPACK from './util/unpack.cjs';
 
 const TARGET_PATH = process.cwd() + '/package.json';
 
@@ -49,19 +48,19 @@ export async function install (input) {
   const details = await fetchDetails(source);
 
   // download the tar
-  const tgz = await UNPACK.download(details.tarball);
+  const tgz = await download(details.tarball);
 
   // verify the contents
-  if (!UNPACK.verifyContents(details.shasum, tgz)) {
+  if (!verify(details.shasum, tgz)) {
     throw Error(`ERR_VERIFY: checksum verification of the package failed`); 
   };
 
   // unzip the package contents
-  const tar = await UNPACK.unzip(tgz);
+  const tar = await unzip(tgz);
 
   // untar the package contents
   const target = `${pkg.ujpmDependencies.target}/${source.name}`;
-  await UNPACK.untar(target, tar);
+  await untar(target, tar);
 
   // update package.json
   pkg.ujpmDependencies.packages[source.package] = details.version;

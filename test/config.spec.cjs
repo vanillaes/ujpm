@@ -1,7 +1,7 @@
 const test = require('tape');
 const mock = require('mock-fs');
 const fixtures = require('./config.fixtures.json');
-const CONFIG = require('../src/util/config.cjs');
+const CONFIG = require('../src/util/config.js');
 
 test('CONFIG.read() - throw when package.json is missing', async (t) => {
   mock(fixtures.emptyFile);
