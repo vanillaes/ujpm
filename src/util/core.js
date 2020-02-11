@@ -1,3 +1,7 @@
+import { promisify } from 'util';
+import rmrf from 'rimraf';
+const rimrafAsync = promisify(rmrf);
+
 export function parse (input) {
   const source = {};
 
@@ -45,4 +49,12 @@ export function parse (input) {
   return source;
 }
 
-export default { parse };
+export async function rimraf (target) {
+  try {
+    await rimrafAsync(target);
+  } catch {
+    throw Error(`ERR_REMOVE: Failed to delete the package directory`);
+  }
+}
+
+export default { parse, rimraf };

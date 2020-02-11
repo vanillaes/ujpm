@@ -2,8 +2,7 @@ import CONFIG from './util/config.js';
 import GITHUB from './util/github.js';
 import GPM from './util/gpm.js';
 import NPM from './util/npm.js';
-import { parse } from './util/core.js';
-import RM from './util/rm.cjs';
+import { parse, rimraf } from './util/core.js';
 import UNPACK from './util/unpack.cjs';
 
 const TARGET_PATH = process.cwd() + '/package.json';
@@ -84,7 +83,7 @@ export async function remove (input) {
 
   // delete the source
   const target = `${process.cwd()}/${pkg.ujpmDependencies.target}/${source.name}`;
-  await RM.rf(target);
+  await rimraf(target);
 
   // update package.json
   delete pkg.ujpmDependencies.packages[source.package];
