@@ -13,7 +13,11 @@
     "ujpm": "bin/ujpm"
   },
   "scripts": {
+    "test": "tape-es",
+    "test:watch": "tape-watch-es",
+    "lint": "semistandard",
     "package": "npx rimraf package && npm pack | tail -n 1 | xargs tar -xf",
+    "preversion": "npm test && npm run lint",
     "postversion": "git push --follow-tags"
   },
   "dependencies": {
@@ -25,7 +29,9 @@
     "tar-fs": "^2.0.0"
   },
   "devDependencies": {
+    "mock-console-es": "^1.0.3",
     "mock-fs": "^4.9.0",
-    "tape": "^4.10.1"
+    "semistandard": "^14.2.0",
+    "tape-es": "^1.2.0"
   }
 }
