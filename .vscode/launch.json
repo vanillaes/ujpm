@@ -7,14 +7,14 @@
     {
       "type": "node",
       "request": "launch",
-      "runtimeVersion": "13.2.0",
+      "runtimeVersion": "13.7.0",
       "name": "Debug",
       "program": "${file}"
     },
     {
       "type": "node",
       "request": "launch",
-      "runtimeVersion": "13.2.0",
+      "runtimeVersion": "13.7.0",
       "name": "Test",
       "cwd": "${workspaceFolder}/test",
       "args": [
@@ -24,7 +24,7 @@
     {
       "type": "node",
       "request": "launch",
-      "runtimeVersion": "13.2.0",
+      "runtimeVersion": "13.7.0",
       "name": "Version",
       "cwd": "${workspaceFolder}/dev",
       "program": "${workspaceFolder}/bin/ujpm",
@@ -35,7 +35,7 @@
     {
       "type": "node",
       "request": "launch",
-      "runtimeVersion": "13.2.0",
+      "runtimeVersion": "13.7.0",
       "name": "Init",
       "cwd": "${workspaceFolder}/dev",
       "program": "${workspaceFolder}/bin/ujpm",
@@ -46,7 +46,7 @@
     {
       "type": "node",
       "request": "launch",
-      "runtimeVersion": "13.2.0",
+      "runtimeVersion": "13.7.0",
       "name": "Install",
       "cwd": "${workspaceFolder}/dev",
       "program": "${workspaceFolder}/bin/ujpm",
@@ -58,7 +58,7 @@
     {
       "type": "node",
       "request": "launch",
-      "runtimeVersion": "13.2.0",
+      "runtimeVersion": "13.7.0",
       "name": "Remove",
       "cwd": "${workspaceFolder}/dev",
       "program": "${workspaceFolder}/bin/ujpm",
