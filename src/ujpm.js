@@ -4,8 +4,6 @@ import GITHUB from './util/github.js';
 import GPM from './util/gpm.js';
 import NPM from './util/npm.js';
 
-const TARGET_PATH = process.cwd() + '/package.json';
-
 export async function init (target) {
   // read package.json
   let pkg = await CONFIG.read();
