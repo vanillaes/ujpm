@@ -1,19 +1,14 @@
-const test = require('tape');
-const mock = require('mock-fs');
-const fs = require('fs');
-const fixtures = require('./init.fixtures.json');
-const ujpm = require('../src/ujpm.cjs');
+import test from 'tape';
+import mock from 'mock-fs';
+import fs from 'fs';
+import ujpm from '../src/ujpm.js';
 
-const logging = {
-  log: null,
-  disable: () => {
-    this.log = console.log; 
-    console.log = msg => {};
-  },
-  enable: () => {
-    console.log = this.log;
-  }
-}
+import { MockConsole } from 'mock-console-es';
+const logging = new MockConsole();
+
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const fixtures = require('./__test__/init.json');
 
 test('Init - throw if package.json does not exist', async (t) => {
   mock(fixtures.emptyFile)
@@ -35,10 +30,12 @@ test('Init - by default should init with a generic config', async (t) => {
   try {
     logging.disable();
     await ujpm.init();
-    logging.enable();
-    const result = fs.readFileSync('package.json', 'utf-8');
-    const expect = fixtures.ujpmInitData;
-    t.equals(expect, result, 'should have the correct package.json contents');
+    logging.restore();
+
+    const result = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
+    const expect = JSON.parse(fixtures.ujpmInitData);
+
+    t.deepEqual(expect, result, 'should have the correct package.json contents');
   } catch {
     t.fail('should not throw an exception during initialization');
   }
@@ -52,10 +49,12 @@ test('Init - supplied a target should init with the target prop set', async (t) 
   try {
     logging.disable();
     await ujpm.init('vendor');
-    logging.enable();
-    const result = fs.readFileSync('package.json', 'utf-8');
-    const expect = fixtures.ujpmInitData2;
-    t.equals(expect, result);
+    logging.restore();
+
+    const result = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
+    const expect = JSON.parse(fixtures.ujpmInitData2);
+
+    t.deepEqual(expect, result);
   } catch {
     t.fail('should not throw an exception during initialization');
   }
