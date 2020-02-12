@@ -1,9 +1,9 @@
-import { promises as fs } from  'fs';
+import { promises as fs } from 'fs';
 const PKG_PATH = process.cwd() + '/package.json';
 
 export async function read () {
   try {
-    await fs.stat(PKG_PATH)
+    await fs.stat(PKG_PATH);
   } catch {
     throw Error('ERR_CONFIG: package.json not found, is this a package?');
   }
@@ -25,7 +25,7 @@ export async function write (pkg) {
 
 export function exists (pkg) {
   if (pkg.ujpmDependencies) {
-    throw Error(`ERR_CONFIG: Init failed, 'ujpmDependencies' already exists in package.json`);
+    throw Error('ERR_CONFIG: Init failed, \'ujpmDependencies\' already exists in package.json');
   }
 
   return pkg;

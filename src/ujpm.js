@@ -1,13 +1,13 @@
 import { download, parse, rimraf, untar, unzip, verify } from './util/core.js';
 import CONFIG from './util/config.js';
 import GITHUB from './util/github.js';
-import GPM from './util/gpm.js';
+// import GPM from './util/gpm.js';
 import NPM from './util/npm.js';
 
 export async function init (target) {
   // read package.json
   let pkg = await CONFIG.read();
-  
+
   // check if config already exists
   pkg = CONFIG.exists(pkg);
 
@@ -25,14 +25,14 @@ export async function init (target) {
 
 export async function install (input) {
   // read package.json
-  let pkg = await CONFIG.read();
+  const pkg = await CONFIG.read();
 
   // parse the input
   const source = parse(input);
 
   // exit if UJPM config not present
   if (!CONFIG.isInitialized(pkg)) {
-    console.log(`UJPM config missing in package.json, to initialize this package run 'ujpm init'`);
+    console.log('UJPM config missing in package.json, to initialize this package run \'ujpm init\'');
     process.exit(1);
   }
 
@@ -40,7 +40,7 @@ export async function install (input) {
   if (CONFIG.isInstalled(pkg, source.name)) {
     console.log(`'${source.name}' is already installed`);
     process.exit(1);
-  };
+  }
 
   // fetch the package details
   const details = await fetchDetails(source);
@@ -50,8 +50,8 @@ export async function install (input) {
 
   // verify the contents
   if (!verify(details.shasum, tgz)) {
-    throw Error(`ERR_VERIFY: checksum verification of the package failed`); 
-  };
+    throw Error('ERR_VERIFY: checksum verification of the package failed');
+  }
 
   // unzip the package contents
   const tar = await unzip(tgz);
@@ -64,18 +64,18 @@ export async function install (input) {
   pkg.ujpmDependencies.packages[source.package] = details.version;
   await CONFIG.write(pkg);
 
-  console.log(`${input} installed successfully` );
+  console.log(`${input} installed successfully`);
 }
 
 export async function remove (input) {
   // read package.json
-  let pkg = await CONFIG.read();
+  const pkg = await CONFIG.read();
 
   // parse the input
   const source = parse(input);
 
   if (!CONFIG.isInstalled(pkg, source.package)) {
-    throw Error(`ERR_REMOVE: package is not installed`)
+    throw Error('ERR_REMOVE: package is not installed');
   }
 
   // delete the source
@@ -85,8 +85,8 @@ export async function remove (input) {
   // update package.json
   delete pkg.ujpmDependencies.packages[source.package];
   await CONFIG.write(pkg);
-  
-  console.log(`${input} removed successfully` );
+
+  console.log(`${input} removed successfully`);
 }
 
 export async function update () {
@@ -101,22 +101,20 @@ export async function update () {
   // TODO: update to latest or version provided
 
   // TODO: update package.json
-
 }
 
 async function fetchDetails (source) {
   // OMG THIS IS SO FETCH!!!
-  switch(source.strategy) {
+  switch (source.strategy) {
     case 'github':
-      return await GITHUB.fetchDetails(source);
+      return GITHUB.fetchDetails(source);
     case 'npm':
-      return await NPM.fetchDetails(source);
-    case 'gpm':
-      // #SomeDay
-      // return await GPM.fetchDetails(source);
+      return NPM.fetchDetails(source);
+    // case 'gpm':
+    //   return GPM.fetchDetails(source);
     default:
       console.log(`'${source.strategy}' strategy not supported`);
-      exit(1);
+      process.exit(1);
   }
 }
 

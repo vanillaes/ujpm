@@ -2,16 +2,15 @@ import test from 'tape';
 import mock from 'mock-fs';
 import fs from 'fs';
 import ujpm from '../src/ujpm.js';
-
 import { MockConsole } from 'mock-console-es';
-const logging = new MockConsole();
-
 import { createRequire } from 'module';
+
+const logging = new MockConsole();
 const require = createRequire(import.meta.url);
 const fixtures = require('./__test__/init.json');
 
 test('Init - throw if package.json does not exist', async (t) => {
-  mock(fixtures.emptyFile)
+  mock(fixtures.emptyFile);
   t.plan(1);
 
   try {

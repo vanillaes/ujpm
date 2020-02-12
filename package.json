@@ -29,9 +29,13 @@
     "tar-fs": "^2.0.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.3",
     "mock-console-es": "^1.0.3",
     "mock-fs": "^4.9.0",
     "semistandard": "^14.2.0",
     "tape-es": "^1.2.0"
+  },
+  "semistandard": {
+    "parser": "babel-eslint"
   }
 }

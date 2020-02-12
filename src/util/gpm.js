@@ -7,7 +7,6 @@ function getVersions (pack) {
 }
 
 function getLatest (version) {
-
   return version;
 }
 

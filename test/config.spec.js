@@ -10,9 +10,9 @@ test('read() - throw when package.json is missing', async (t) => {
 
   try {
     await read();
-  } catch(e) {
+  } catch (e) {
     t.pass('should throw an exception');
-    t.equal(e.message, `ERR_CONFIG: package.json not found, is this a package?`, 'should have the correct message');
+    t.equal(e.message, 'ERR_CONFIG: package.json not found, is this a package?', 'should have the correct message');
   }
 
   mock.restore();
@@ -23,7 +23,7 @@ test('read() - read package.json contents', async (t) => {
   mock(fixtures.npmInit);
 
   const pkg = await read();
-  t.deepEqual(pkg, { name: "tmp"}, 'should read the package contents')
+  t.deepEqual(pkg, { name: 'tmp' }, 'should read the package contents');
 
   mock.restore();
   t.end();
@@ -63,9 +63,9 @@ test('exists(pkg) - throw if config already exists', (t) => {
   const pkg = JSON.parse(fixtures.ujpmInitData);
   try {
     exists(pkg);
-  } catch(e) {
+  } catch (e) {
     t.pass('should throw an exception');
-    t.equal(e.message, `ERR_CONFIG: Init failed, 'ujpmDependencies' already exists in package.json`, 'should have the correct message');
+    t.equal(e.message, 'ERR_CONFIG: Init failed, \'ujpmDependencies\' already exists in package.json', 'should have the correct message');
   }
 
   t.end();
@@ -100,7 +100,7 @@ test('isInitialized(pkg) - false if the config has not been initialized', (t) =>
 
 test('isInstalled(pkg) - false if the package has not been installed', (t) => {
   const pkg = JSON.parse(fixtures.ujpmInitData);
-  const actual = isInstalled(pkg, "wc-markdown");
+  const actual = isInstalled(pkg, 'wc-markdown');
 
   t.isEqual(actual, false, 'should return false if it has not been installed');
 
@@ -109,7 +109,7 @@ test('isInstalled(pkg) - false if the package has not been installed', (t) => {
 
 test('isInstalled(pkg) - true if the package has not been installed', (t) => {
   const pkg = JSON.parse(fixtures.ujpmPackageExistsData);
-  const actual = isInstalled(pkg, "wc-markdown");
+  const actual = isInstalled(pkg, 'wc-markdown');
 
   t.isEqual(actual, true, 'should return true if it has not been installed');
 

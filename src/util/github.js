@@ -8,7 +8,6 @@ function getVersions (pack) {
 
 // https://api.github.com/repos/vanillawc/wc-markdown/releases/latest
 function getLatest (version) {
-
   return version;
 }
 

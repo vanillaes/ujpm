@@ -6,7 +6,7 @@ async function fetchDetails (source) {
   const identity = formatIdentity(source);
   const version = await matchVersion(identity, source.version);
   const { tarball, shasum } = await getDownload(identity, version);
-  return { version, tarball, shasum }
+  return { version, tarball, shasum };
 }
 
 // npm view @vanillawc/wc-markdown versions --json
@@ -19,7 +19,7 @@ async function getVersions (identity) {
     const { stdout } = await execAsync(command);
     output = stdout;
   } catch (err) {
-    console.error(`NPM_ERROR: failed to fetch the version listing`, err);
+    console.error('NPM_ERROR: failed to fetch the version listing', err);
   }
 
   // convert to JSON and return
@@ -36,7 +36,7 @@ async function getLatest (identity) {
     const { stdout } = await execAsync(command);
     output = stdout;
   } catch (err) {
-    console.error(`NPM_ERROR: failed to fetch the version listing`, err);
+    console.error('NPM_ERROR: failed to fetch the version listing', err);
   }
 
   // convert to JSON and return
@@ -53,7 +53,7 @@ async function getDownload (identity, version) {
     const { stdout } = await execAsync(command);
     output = stdout;
   } catch (err) {
-    console.error(`NPM_ERROR: failed to fetch the version details`, err);
+    console.error('NPM_ERROR: failed to fetch the version details', err);
   }
 
   // parse and return the details
@@ -68,8 +68,8 @@ function formatIdentity (source) {
 
 async function matchVersion (identity, version) {
   // easy path: no version specified so use the latest version
-  if (version === 'latest'){
-    return await getLatest(identity);
+  if (version === 'latest') {
+    return getLatest(identity);
   }
 
   // mid path: is this version available?
