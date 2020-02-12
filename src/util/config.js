@@ -2,7 +2,9 @@ import { promises as fs } from  'fs';
 const PKG_PATH = process.cwd() + '/package.json';
 
 export async function read () {
-  if (!await fs.stat(PKG_PATH)) {
+  try {
+    await fs.stat(PKG_PATH)
+  } catch {
     throw Error('ERR_CONFIG: package.json not found, is this a package?');
   }
 
