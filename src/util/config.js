@@ -17,6 +17,12 @@ export async function read () {
 
 export async function write (pkg) {
   try {
+    await fs.stat(PKG_PATH);
+  } catch {
+    throw Error('ERR_CONFIG: package.json not found, is this a package?');
+  }
+
+  try {
     await fs.writeFile(PKG_PATH, JSON.stringify(pkg, null, 2));
   } catch {
     throw Error('ERR_CONFIG: failed to write to package.json');
