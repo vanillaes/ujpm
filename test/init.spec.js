@@ -10,13 +10,13 @@ const require = createRequire(import.meta.url);
 const fixtures = require('./__test__/init.json');
 
 test('Init - throw if package.json does not exist', async (t) => {
-  mock(fixtures.emptyFile);
+  mock({});
   t.plan(1);
 
   try {
     await ujpm.init();
   } catch {
-    t.pass(' should throw an exception if package.json does not exist');
+    t.pass('should throw an exception if package.json does not exist');
   }
 
   mock.restore();
@@ -24,7 +24,9 @@ test('Init - throw if package.json does not exist', async (t) => {
 });
 
 test('Init - by default should init with a generic config', async (t) => {
-  mock(fixtures.emptyConfig);
+  mock({
+    'package.json': JSON.stringify(fixtures.emptyConfig)
+  });
 
   try {
     logging.disable();
@@ -32,7 +34,7 @@ test('Init - by default should init with a generic config', async (t) => {
     logging.restore();
 
     const result = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
-    const expect = JSON.parse(fixtures.ujpmInitData);
+    const expect = fixtures.ujpmInit;
 
     t.deepEqual(expect, result, 'should have the correct package.json contents');
   } catch {
@@ -43,7 +45,9 @@ test('Init - by default should init with a generic config', async (t) => {
 });
 
 test('Init - supplied a target should init with the target prop set', async (t) => {
-  mock(fixtures.emptyConfig);
+  mock({
+    'package.json': JSON.stringify(fixtures.emptyConfig)
+  });
 
   try {
     logging.disable();
@@ -51,7 +55,7 @@ test('Init - supplied a target should init with the target prop set', async (t) 
     logging.restore();
 
     const result = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
-    const expect = JSON.parse(fixtures.ujpmInitData2);
+    const expect = fixtures.ujpmInit2;
 
     t.deepEqual(expect, result);
   } catch {

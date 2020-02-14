@@ -1,8 +1,14 @@
 {
-  "emptyFile": "",
-  "emptyConfig": {
-    "package.json": "{}"
+  "emptyConfig": {},
+  "ujpmInit": {
+    "ujpmDependencies": {
+      "packages": {}
+    }
   },
-  "ujpmInitData": "{\n  \"ujpmDependencies\": {\n    \"packages\": {}\n  }\n}",
-  "ujpmInitData2": "{\n  \"ujpmDependencies\": {\n    \"target\": \"vendor\",\n    \"packages\": {}\n  }\n}"
+  "ujpmInit2": {
+    "ujpmDependencies": {
+      "target": "vendor",
+      "packages": {}
+    }
+  }
 }
