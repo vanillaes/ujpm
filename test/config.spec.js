@@ -6,7 +6,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const fixtures = require('./__test__/config.json');
 
-test('read() - throw when package.json is missing', async (t) => {
+test('Config read() - throw when package.json is missing', async (t) => {
   mock();
 
   try {
@@ -20,7 +20,7 @@ test('read() - throw when package.json is missing', async (t) => {
   t.end();
 });
 
-test('read() - read package.json contents', async (t) => {
+test('Config read() - read package.json contents', async (t) => {
   mock({
     'package.json': JSON.stringify(fixtures.npmInit)
   });
@@ -33,7 +33,7 @@ test('read() - read package.json contents', async (t) => {
   t.end();
 });
 
-test('write() - throws when package.json is missing', async (t) => {
+test('Config write() - throws when package.json is missing', async (t) => {
   mock();
 
   try {
@@ -47,7 +47,7 @@ test('write() - throws when package.json is missing', async (t) => {
   t.end();
 });
 
-test('write(pkg) - write package.json contents', async (t) => {
+test('Config write(pkg) - write package.json contents', async (t) => {
   mock({
     'package.json': JSON.stringify(fixtures.emptyConfig)
   });
@@ -62,7 +62,7 @@ test('write(pkg) - write package.json contents', async (t) => {
   t.end();
 });
 
-test('exists(pkg) - no-op if the config has not been created yet', (t) => {
+test('Config exists(pkg) - no-op if the config has not been created yet', (t) => {
   const pkg = fixtures.emptyConfig;
   const actual = exists(pkg);
 
@@ -71,19 +71,19 @@ test('exists(pkg) - no-op if the config has not been created yet', (t) => {
   t.end();
 });
 
-test('exists(pkg) - throw if config already exists', (t) => {
+test('Config exists(pkg) - throw if config already exists', (t) => {
   const pkg = fixtures.ujpmInit;
   try {
     exists(pkg);
   } catch (e) {
     t.pass('should throw an exception');
-    t.equal(e.message, 'ERR_CONFIG: Init failed, \'ujpmDependencies\' already exists in package.json', 'should have the correct message');
+    t.equal(e.message, 'ERR_CONFIG: Init failed, \'pkg.modules\' already exists', 'should have the correct message');
   }
 
   t.end();
 });
 
-test('isInitialized(pkg) - true if the config has been initialized', (t) => {
+test('Config isInitialized(pkg) - true if the config has been initialized', (t) => {
   const pkg = fixtures.ujpmInit;
   const actual = isInitialized(pkg);
 
@@ -92,7 +92,7 @@ test('isInitialized(pkg) - true if the config has been initialized', (t) => {
   t.end();
 });
 
-test('isInitialized(pkg) - false if the config has not been initialized', (t) => {
+test('Config isInitialized(pkg) - false if the config has not been initialized', (t) => {
   const pkg = fixtures.emptyConfig;
   const actual = isInitialized(pkg);
 
@@ -101,7 +101,7 @@ test('isInitialized(pkg) - false if the config has not been initialized', (t) =>
   t.end();
 });
 
-test('isInstalled(pkg) - false if the package has not been installed', (t) => {
+test('Config isInstalled(pkg) - false if the package has not been installed', (t) => {
   const pkg = fixtures.ujpmInit;
   const actual = isInstalled(pkg, 'wc-markdown');
 
@@ -110,7 +110,7 @@ test('isInstalled(pkg) - false if the package has not been installed', (t) => {
   t.end();
 });
 
-test('isInstalled(pkg) - true if the package has not been installed', (t) => {
+test('Config isInstalled(pkg) - true if the package has not been installed', (t) => {
   const pkg = fixtures.ujpmPackageExists;
   const actual = isInstalled(pkg, 'wc-markdown');
 

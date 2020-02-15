@@ -30,8 +30,8 @@ export async function write (pkg) {
 }
 
 export function exists (pkg) {
-  if (pkg.ujpmDependencies) {
-    throw Error('ERR_CONFIG: Init failed, \'ujpmDependencies\' already exists in package.json');
+  if (pkg.modules) {
+    throw Error('ERR_CONFIG: Init failed, \'pkg.modules\' already exists');
   }
 
   return pkg;
@@ -39,12 +39,12 @@ export function exists (pkg) {
 
 // has ujpm been initialized for this project?
 export function isInitialized (pkg) {
-  return !!(pkg.ujpmDependencies && pkg.ujpmDependencies.packages);
+  return !!(pkg.modules);
 }
 
 // fetch the names of installed packages
 export function isInstalled (pkg, name) {
-  const keys = Object.keys(pkg.ujpmDependencies.packages);
+  const keys = Object.keys(pkg.modules);
 
   return keys.includes(name);
 }

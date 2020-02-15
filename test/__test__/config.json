@@ -4,19 +4,13 @@
     "name": "test"
   },
   "ujpmInit": {
-    "name": "tmp",
-    "ujpmDependencies": {
-      "target": "ujpm",
-      "packages": {}
-    }
+    "name": "test",
+    "modules": {}
   },
   "ujpmPackageExists": {
-    "name": "tmp",
-    "ujpmDependencies": {
-      "target": "ujpm",
-      "packages": {
-        "wc-markdown": "1.0.4"
-      }
+    "name": "test",
+    "modules": {
+      "wc-markdown": "1.0.4"
     }
   }
 }

@@ -1,8 +1,11 @@
+import { join } from 'path';
 import { download, parse, rimraf, untar, unzip, verify } from './util/core.js';
 import CONFIG from './util/config.js';
 import GITHUB from './util/github.js';
 // import GPM from './util/gpm.js';
 import NPM from './util/npm.js';
+
+const TARGET_DIR = 'modules';
 
 export async function init (target) {
   // read package.json
@@ -12,9 +15,7 @@ export async function init (target) {
   pkg = CONFIG.exists(pkg);
 
   // add basic config
-  pkg.ujpmDependencies = {};
-  pkg.ujpmDependencies.target = target;
-  pkg.ujpmDependencies.packages = {};
+  pkg.modules = {};
 
   // prettify and log the output
   console.log(JSON.stringify(pkg, null, 2));
@@ -57,11 +58,11 @@ export async function install (input) {
   const tar = await unzip(tgz);
 
   // untar the package contents
-  const target = `${pkg.ujpmDependencies.target}/${source.name}`;
+  const target = join(TARGET_DIR, source.name);
   await untar(target, tar);
 
   // update package.json
-  pkg.ujpmDependencies.packages[source.package] = details.version;
+  pkg.modules[source.package] = details.version;
   await CONFIG.write(pkg);
 
   console.log(`${input} installed successfully`);
@@ -79,11 +80,11 @@ export async function remove (input) {
   }
 
   // delete the source
-  const target = `${process.cwd()}/${pkg.ujpmDependencies.target}/${source.name}`;
+  const target = join(TARGET_DIR, source.name);
   await rimraf(target);
 
   // update package.json
-  delete pkg.ujpmDependencies.packages[source.package];
+  delete pkg.modules[source.package];
   await CONFIG.write(pkg);
 
   console.log(`${input} removed successfully`);

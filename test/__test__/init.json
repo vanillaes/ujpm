@@ -1,14 +1,6 @@
 {
   "emptyConfig": {},
   "ujpmInit": {
-    "ujpmDependencies": {
-      "packages": {}
-    }
-  },
-  "ujpmInit2": {
-    "ujpmDependencies": {
-      "target": "vendor",
-      "packages": {}
-    }
+    "modules": {}
   }
 }

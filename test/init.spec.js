@@ -15,7 +15,7 @@ test('Init - throw if package.json does not exist', async (t) => {
 
   try {
     await ujpm.init();
-  } catch {
+  } catch (e) {
     t.pass('should throw an exception if package.json does not exist');
   }
 
@@ -37,27 +37,6 @@ test('Init - by default should init with a generic config', async (t) => {
     const expect = fixtures.ujpmInit;
 
     t.deepEqual(expect, result, 'should have the correct package.json contents');
-  } catch {
-    t.fail('should not throw an exception during initialization');
-  }
-
-  t.end();
-});
-
-test('Init - supplied a target should init with the target prop set', async (t) => {
-  mock({
-    'package.json': JSON.stringify(fixtures.emptyConfig)
-  });
-
-  try {
-    logging.disable();
-    await ujpm.init('vendor');
-    logging.restore();
-
-    const result = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
-    const expect = fixtures.ujpmInit2;
-
-    t.deepEqual(expect, result);
   } catch {
     t.fail('should not throw an exception during initialization');
   }
