@@ -26,14 +26,14 @@
     "rimraf": "^2.6.3",
     "shasum": "^1.0.2",
     "stream-buffers": "^3.0.2",
-    "tar-fs": "^2.0.0"
+    "tar-fs": "^2.0.1"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
-    "mock-console-es": "^1.0.3",
+    "babel-eslint": "^10.1.0",
+    "mock-console-es": "^1.0.4",
     "mock-fs": "^4.9.0",
     "semistandard": "^14.2.0",
-    "tape-es": "^1.2.0"
+    "tape-es": "^1.2.3"
   },
   "semistandard": {
     "parser": "babel-eslint"
