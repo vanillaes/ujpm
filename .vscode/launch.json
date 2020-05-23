@@ -1,31 +1,28 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "This",
       "type": "node",
       "request": "launch",
-      "runtimeVersion": "13.7.0",
-      "name": "Debug",
+      "runtimeVersion": "14.2.0",
       "program": "${file}"
     },
     {
+      "name": "Test",
       "type": "node",
       "request": "launch",
-      "runtimeVersion": "13.7.0",
-      "name": "Test",
+      "runtimeVersion": "14.2.0",
       "cwd": "${workspaceFolder}/test",
       "args": [
         "${file}"
       ]
     },
     {
+      "name": "Version",
       "type": "node",
       "request": "launch",
-      "runtimeVersion": "13.7.0",
-      "name": "Version",
+      "runtimeVersion": "14.2.0",
       "cwd": "${workspaceFolder}/dev",
       "program": "${workspaceFolder}/bin/ujpm",
       "args": [
@@ -33,10 +30,10 @@
       ]
     },
     {
+      "name": "Init",
       "type": "node",
       "request": "launch",
-      "runtimeVersion": "13.7.0",
-      "name": "Init",
+      "runtimeVersion": "14.2.0",
       "cwd": "${workspaceFolder}/dev",
       "program": "${workspaceFolder}/bin/ujpm",
       "args": [
@@ -44,10 +41,10 @@
       ]
     },
     {
+      "name": "Install",
       "type": "node",
       "request": "launch",
-      "runtimeVersion": "13.7.0",
-      "name": "Install",
+      "runtimeVersion": "14.2.0",
       "cwd": "${workspaceFolder}/dev",
       "program": "${workspaceFolder}/bin/ujpm",
       "args": [
@@ -56,10 +53,10 @@
       ]
     },
     {
+      "name": "Remove",
       "type": "node",
       "request": "launch",
-      "runtimeVersion": "13.7.0",
-      "name": "Remove",
+      "runtimeVersion": "14.2.0",
       "cwd": "${workspaceFolder}/dev",
       "program": "${workspaceFolder}/bin/ujpm",
       "args": [
