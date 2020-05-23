@@ -10,7 +10,7 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "ujpm": "bin/ujpm"
+    "ujpm": "bin/ujpm.js"
   },
   "scripts": {
     "test": "tape-es",
@@ -33,9 +33,12 @@
     "mock-console-es": "^1.0.4",
     "mock-fs": "^4.9.0",
     "semistandard": "^14.2.0",
-    "tape-es": "^1.2.3"
+    "tape-es": "^1.2.5"
   },
   "semistandard": {
     "parser": "babel-eslint"
+  },
+  "engines": {
+    "node": "~14"
   }
 }
