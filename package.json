@@ -6,6 +6,7 @@
     "package-manager",
     "esm"
   ],
+  "repository": "https://github.com/vanillaes/ujpm.git",
   "author": "Evan Plaice <evanplaice@gmail.com> (http://evanplaice.com/)",
   "license": "MIT",
   "type": "module",
