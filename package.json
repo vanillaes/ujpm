@@ -30,8 +30,8 @@
     "tar-fs": "^2.0.1"
   },
   "devDependencies": {
+    "@vanillaes/mock-console": "^1.1.0",
     "babel-eslint": "^10.1.0",
-    "mock-console-es": "^1.0.4",
     "mock-fs": "^4.9.0",
     "semistandard": "^14.2.0",
     "tape-es": "^1.2.5"

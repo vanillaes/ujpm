@@ -2,7 +2,7 @@ import test from 'tape';
 import mock from 'mock-fs';
 import fs from 'fs';
 import ujpm from '../src/ujpm.js';
-import { MockConsole } from 'mock-console-es';
+import { MockConsole } from '@vanillaes/mock-console';
 import { createRequire } from 'module';
 
 const logging = new MockConsole();
