@@ -1,5 +1,5 @@
 function fetchDetails () {
-  console.log('fetching GitHub package details');
+  console.log('fetching GitHub package details')
 }
 
 function getVersions (pack) {
@@ -7,11 +7,11 @@ function getVersions (pack) {
 }
 
 function getLatest (version) {
-  return version;
+  return version
 }
 
 function filterVersion (version) {
 
 }
 
-export default { fetchDetails, getVersions, getLatest, filterVersion };
+export default { fetchDetails, getVersions, getLatest, filterVersion }
