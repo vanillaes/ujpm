@@ -16,7 +16,7 @@
   "scripts": {
     "test": "tape-es",
     "test:watch": "tape-watch-es",
-    "lint": "semistandard",
+    "lint": "esmtk lint",
     "package": "npx rimraf package && npm pack | tail -n 1 | xargs tar -xf",
     "preversion": "npm test && npm run lint",
     "postversion": "git push --follow-tags"
@@ -31,13 +31,9 @@
   },
   "devDependencies": {
     "@vanillaes/mock-console": "^1.1.0",
-    "babel-eslint": "^10.1.0",
+    "esmtk": "^0.1.1",
     "mock-fs": "^4.9.0",
-    "semistandard": "^14.2.0",
     "tape-es": "^1.2.5"
-  },
-  "semistandard": {
-    "parser": "babel-eslint"
   },
   "engines": {
     "node": "~14"
