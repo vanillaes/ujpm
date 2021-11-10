@@ -22,18 +22,18 @@
     "postversion": "git push --follow-tags"
   },
   "dependencies": {
-    "commander": "^2.20.0",
+    "commander": "^2.20.3",
     "node-gzip": "^1.1.2",
-    "rimraf": "^2.6.3",
+    "rimraf": "^2.7.1",
     "shasum": "^1.0.2",
     "stream-buffers": "^3.0.2",
-    "tar-fs": "^2.0.1"
+    "tar-fs": "^2.1.1"
   },
   "devDependencies": {
-    "@vanillaes/mock-console": "^1.1.0",
-    "esmtk": "^0.5.1",
-    "mock-fs": "^4.9.0",
-    "tape-es": "^1.2.5"
+    "@vanillaes/mock-console": "^1.1.5",
+    "esmtk": "^0.5.13",
+    "mock-fs": "^4.14.0",
+    "tape-es": "^1.2.16"
   },
   "engines": {
     "node": ">=14"
